@@ -65,12 +65,19 @@ class Auto_Download:
 
 
     def ClickToXpath(self,xpaths,waittime = 5):
-        try:
-            time.sleep(waittime)
-            button = self.driver.find_element("xpath", xpaths)
-            button.click()
-        except:
-            print("FIND ERROR")
+        x = 0
+        while True:
+            try:
+                time.sleep(0.3)
+                button = self.driver.find_element("xpath", xpaths)
+                button.click()
+                break
+            except:
+                print(x)
+                x += 0.3
+                if x >= waittime:
+                    print(f"FIND ERROR : {xpaths}")
+                    break
         try:
             return button.text
         except:
@@ -84,13 +91,17 @@ class Auto_Download:
 
         self.ClickToXpath("//*[@data-testid='@upload-modal/start_with_ai_card']")
 
-        time.sleep(9)
 
         try:
+            self.ClickToXpath("//*[@data-testid='@upload-modal/start-with-ai/input']")
             input_field = self.driver.find_element("xpath", "//*[@data-testid='@upload-modal/start-with-ai/input']")
             input_field.send_keys(subject)
+            print(f"INPUT OK : {subject}")
+
         except:
             print("INPUT ERROR")
+
+
 
         self.ClickToXpath("//*[@data-testid='@upload-modal/start-with-ai/generate-button']") 
         time.sleep(5)
