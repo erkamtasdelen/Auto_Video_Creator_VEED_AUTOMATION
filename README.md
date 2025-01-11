@@ -136,3 +136,18 @@ Contributions are welcome! Feel free to fork this repository and submit a pull r
 - [Selenium](https://www.selenium.dev/)
 - [Veed.io](https://www.veed.io/)
 - [WebDriver Manager](https://pypi.org/project/webdriver-manager/)
+
+
+
+----------------
+
+
+## Updates
+
+### January 11, 2025
+
+- Significant improvements have been made to the `ClickToXpath` function in the `Auto_Video_Creator.py` file.  
+  - A retry mechanism has been added to handle cases where the target button is not immediately found.  
+  - If the button is not located, the function will attempt to find and click it at regular intervals, improving reliability.  
+  - This update has drastically enhanced the function's timing performance, making it nearly **5 times faster** in handling dynamic delays during the button loading process.
+
